@@ -1,4 +1,4 @@
-# Savorly — AI-Powered Cookbook & Recipe Discovery
+# Flavourly — AI-Powered Cookbook & Recipe Discovery
 
 A premium, interactive recipe discovery app: pick a cuisine, search for a dish, watch the best-matched YouTube recipe video, and ask **Chef AI** for substitutions, spice adjustments, or servings scaling — all bound to whatever recipe you're currently viewing.
 

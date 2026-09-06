@@ -1,9 +1,9 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import Savorly from "../Savorly.jsx";
+import Flavourly from "../Flavourly.jsx";
 
 createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Savorly />
+    <Flavourly />
   </React.StrictMode>,
 );

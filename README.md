@@ -2,7 +2,7 @@
 
 A premium, interactive recipe discovery app: pick a cuisine, search for a dish, watch the best-matched YouTube recipe video, and ask **Chef AI** for substitutions, spice adjustments, or servings scaling — all bound to whatever recipe you're currently viewing.
 
-This build is a **working front-end demo** in a single React file (`Savorly.jsx`), with realistic mock data standing in for the YouTube Data API and an LLM, so the entire app runs with zero API keys.
+This build is a **working front-end demo** in a single React file (`Flavourly.jsx`), with realistic mock data standing in for the YouTube Data API and an LLM, so the entire app runs with zero API keys.
 
 ---
 
@@ -38,20 +38,20 @@ Because the mock logic is isolated in its own functions, swapping in real APIs l
 
 The file is plain React (JSX), so it needs a build tool — it will **not** run by opening it directly or serving it with a static file server like VS Code's Live Server.
 
-**Fastest option (no install):** paste `Savorly.jsx` into [CodeSandbox](https://codesandbox.io) or [StackBlitz](https://stackblitz.com) using their React template — you'll get a live preview and shareable URL immediately.
+**Fastest option (no install):** paste `Flavourly.jsx` into [CodeSandbox](https://codesandbox.io) or [StackBlitz](https://stackblitz.com) using their React template — you'll get a live preview and shareable URL immediately.
 
 **Local setup with Vite:**
 
 ```bash
-npm create vite@latest savorly -- --template react
-cd savorly
+npm create vite@latest flavourly -- --template react
+cd flavourly
 npm install
 npm install lucide-react
 ```
 
 Then:
-1. Replace the contents of `src/App.jsx` with the full contents of `Savorly.jsx`.
-2. Empty out `src/index.css` and `src/App.css` so Vite's default styles don't clash with Savorly's own CSS.
+1. Replace the contents of `src/App.jsx` with the full contents of `Flavourly.jsx`.
+2. Empty out `src/index.css` and `src/App.css` so Vite's default styles don't clash with Flavourly's own CSS.
 3. Run the dev server:
 
 ```bash
@@ -74,7 +74,7 @@ Once `npm run build` works locally:
 ## Project structure (current single-file demo)
 
 ```
-Savorly.jsx        # Entire app: data, search, Chef AI logic, all page components, styles
+Flavourly.jsx        # Entire app: data, search, Chef AI logic, all page components, styles
 ```
 
 A production version would typically split this into:

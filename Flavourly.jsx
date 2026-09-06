@@ -637,25 +637,25 @@ function formatAmount(n) {
 function GradientArt({ colors, icon, size = "normal" }) {
   return (
     <div
-      className="savorly-art"
+      className="flavourly-art"
       style={{
         background: `linear-gradient(135deg, ${colors[0]}, ${colors[1]})`,
         height: size === "hero" ? 280 : size === "small" ? 90 : 160,
       }}
     >
-      <div className="savorly-art-shine" />
+      <div className="flavourly-art-shine" />
       <span style={{ fontSize: size === "hero" ? 64 : size === "small" ? 28 : 44 }}>{icon}</span>
     </div>
   );
 }
 
 function DifficultyBadge({ level }) {
-  return <span className={`savorly-badge savorly-badge-${level.toLowerCase()}`}>{level}</span>;
+  return <span className={`flavourly-badge flavourly-badge-${level.toLowerCase()}`}>{level}</span>;
 }
 
 function SpiceLevel({ level }) {
   return (
-    <span className="savorly-spice" title={`Spice level ${level}/3`}>
+    <span className="flavourly-spice" title={`Spice level ${level}/3`}>
       {[0, 1, 2].map((i) => (
         <Flame key={i} size={13} strokeWidth={2} fill={i < level ? "#B5432A" : "none"} color={i < level ? "#B5432A" : "#C9BBA8"} />
       ))}
@@ -666,19 +666,19 @@ function SpiceLevel({ level }) {
 function RecipeCard({ recipe, onClick }) {
   const cuisine = CUISINE_MAP[recipe.cuisine];
   return (
-    <button className="savorly-card savorly-recipe-card" onClick={onClick}>
-      <div className="savorly-card-media">
+    <button className="flavourly-card flavourly-recipe-card" onClick={onClick}>
+      <div className="flavourly-card-media">
         <GradientArt colors={cuisine.grad} icon={cuisine.flag} />
-        {recipe.trending && <span className="savorly-trend-pill"><TrendingUp size={11} /> Trending</span>}
+        {recipe.trending && <span className="flavourly-trend-pill"><TrendingUp size={11} /> Trending</span>}
       </div>
-      <div className="savorly-card-body">
-        <div className="savorly-card-top-row">
-          <span className="savorly-cuisine-tag">{cuisine.name}</span>
-          <span className="savorly-rating"><Star size={12} fill="#E2963A" color="#E2963A" /> {recipe.rating}</span>
+      <div className="flavourly-card-body">
+        <div className="flavourly-card-top-row">
+          <span className="flavourly-cuisine-tag">{cuisine.name}</span>
+          <span className="flavourly-rating"><Star size={12} fill="#E2963A" color="#E2963A" /> {recipe.rating}</span>
         </div>
-        <h3 className="savorly-card-title">{recipe.title}</h3>
-        <p className="savorly-card-desc">{recipe.description}</p>
-        <div className="savorly-card-meta">
+        <h3 className="flavourly-card-title">{recipe.title}</h3>
+        <p className="flavourly-card-desc">{recipe.description}</p>
+        <div className="flavourly-card-meta">
           <span><Clock size={13} /> {recipe.prepTime + recipe.cookTime} min</span>
           <DifficultyBadge level={recipe.difficulty} />
           <SpiceLevel level={recipe.spice} />
@@ -691,11 +691,11 @@ function RecipeCard({ recipe, onClick }) {
 function MiniRecipeCard({ recipe, onClick }) {
   const cuisine = CUISINE_MAP[recipe.cuisine];
   return (
-    <button className="savorly-mini-card" onClick={onClick}>
-      <div className="savorly-mini-thumb" style={{ background: `linear-gradient(135deg, ${cuisine.grad[0]}, ${cuisine.grad[1]})` }}>
+    <button className="flavourly-mini-card" onClick={onClick}>
+      <div className="flavourly-mini-thumb" style={{ background: `linear-gradient(135deg, ${cuisine.grad[0]}, ${cuisine.grad[1]})` }}>
         <span>{cuisine.flag}</span>
       </div>
-      <div className="savorly-mini-info">
+      <div className="flavourly-mini-info">
         <strong>{recipe.title}</strong>
         <span>{cuisine.name} · {recipe.prepTime + recipe.cookTime} min · {recipe.difficulty}</span>
       </div>
@@ -705,12 +705,12 @@ function MiniRecipeCard({ recipe, onClick }) {
 
 function Skeleton({ rows = 3 }) {
   return (
-    <div className="savorly-skeleton-grid">
+    <div className="flavourly-skeleton-grid">
       {Array.from({ length: rows }).map((_, i) => (
-        <div className="savorly-skeleton-card" key={i}>
-          <div className="savorly-skel savorly-skel-media" />
-          <div className="savorly-skel savorly-skel-line" style={{ width: "70%" }} />
-          <div className="savorly-skel savorly-skel-line" style={{ width: "40%" }} />
+        <div className="flavourly-skeleton-card" key={i}>
+          <div className="flavourly-skel flavourly-skel-media" />
+          <div className="flavourly-skel flavourly-skel-line" style={{ width: "70%" }} />
+          <div className="flavourly-skel flavourly-skel-line" style={{ width: "40%" }} />
         </div>
       ))}
     </div>
@@ -720,12 +720,12 @@ function Skeleton({ rows = 3 }) {
 function Accordion({ title, children }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="savorly-accordion">
-      <button className="savorly-accordion-head" onClick={() => setOpen((o) => !o)} aria-expanded={open}>
+    <div className="flavourly-accordion">
+      <button className="flavourly-accordion-head" onClick={() => setOpen((o) => !o)} aria-expanded={open}>
         <span>{title}</span>
         <ChevronDown size={16} style={{ transform: open ? "rotate(180deg)" : "none", transition: "transform .2s" }} />
       </button>
-      {open && <div className="savorly-accordion-body">{children}</div>}
+      {open && <div className="flavourly-accordion-body">{children}</div>}
     </div>
   );
 }
@@ -770,24 +770,24 @@ function ChefAI({ open, onClose, currentRecipe, onNavigateRecipe, allRecipes, on
   if (!open) return null;
 
   return (
-    <div className="savorly-chef-panel">
-      <div className="savorly-chef-head">
-        <div className="savorly-chef-head-left">
-          <span className="savorly-chef-icon"><ChefHat size={16} /></span>
+    <div className="flavourly-chef-panel">
+      <div className="flavourly-chef-head">
+        <div className="flavourly-chef-head-left">
+          <span className="flavourly-chef-icon"><ChefHat size={16} /></span>
           <div>
             <strong>Chef AI</strong>
-            <div className="savorly-chef-context">{currentRecipe ? `Helping with ${currentRecipe.title}` : "General recipe discovery"}</div>
+            <div className="flavourly-chef-context">{currentRecipe ? `Helping with ${currentRecipe.title}` : "General recipe discovery"}</div>
           </div>
         </div>
-        <button className="savorly-icon-btn" onClick={onClose}><X size={18} /></button>
+        <button className="flavourly-icon-btn" onClick={onClose}><X size={18} /></button>
       </div>
-      <div className="savorly-chef-messages" ref={listRef}>
+      <div className="flavourly-chef-messages" ref={listRef}>
         {messages.map((m, i) => (
-          <div key={i} className={`savorly-chat-row savorly-chat-${m.role}`}>
-            <div className="savorly-chat-bubble">
+          <div key={i} className={`flavourly-chat-row flavourly-chat-${m.role}`}>
+            <div className="flavourly-chat-bubble">
               {m.text}
               {m.suggestions && (
-                <div className="savorly-chat-suggestions">
+                <div className="flavourly-chat-suggestions">
                   {m.suggestions.map((r) => (
                     <MiniRecipeCard key={r.id} recipe={r} onClick={() => { onNavigateRecipe(r); }} />
                   ))}
@@ -797,12 +797,12 @@ function ChefAI({ open, onClose, currentRecipe, onNavigateRecipe, allRecipes, on
           </div>
         ))}
       </div>
-      <div className="savorly-chef-chips">
+      <div className="flavourly-chef-chips">
         {suggestionsChips.map((c) => (
-          <button key={c} className="savorly-chip" onClick={() => send(c)}>{c}</button>
+          <button key={c} className="flavourly-chip" onClick={() => send(c)}>{c}</button>
         ))}
       </div>
-      <div className="savorly-chef-input-row">
+      <div className="flavourly-chef-input-row">
         <input
           aria-label="Ask Chef AI"
           value={input}
@@ -810,7 +810,7 @@ function ChefAI({ open, onClose, currentRecipe, onNavigateRecipe, allRecipes, on
           onKeyDown={(e) => { if (e.key === "Enter") send(); }}
           placeholder={currentRecipe ? `Ask about ${currentRecipe.title}...` : "Tell me what you've got..."}
         />
-        <button className="savorly-send-btn" onClick={() => send()} aria-label="Send message"><Send size={16} /></button>
+        <button className="flavourly-send-btn" onClick={() => send()} aria-label="Send message"><Send size={16} /></button>
       </div>
     </div>
   );
@@ -824,11 +824,11 @@ function HomePage({ onSelectCuisine, onSelectRecipe, onOpenChef, recentlyViewed 
   const [query, setQuery] = useState("");
 
   return (
-    <div className="savorly-page">
-      <section className="savorly-hero">
+    <div className="flavourly-page">
+      <section className="flavourly-hero">
         <h1>What do you feel like<br />cooking today?</h1>
         <p>Search any dish, or start from a cuisine you're craving.</p>
-        <div className="savorly-hero-search">
+        <div className="flavourly-hero-search">
           <Search size={18} />
           <input
             aria-label="Search recipes"
@@ -843,15 +843,15 @@ function HomePage({ onSelectCuisine, onSelectRecipe, onOpenChef, recentlyViewed 
         </div>
       </section>
 
-      <section className="savorly-section" id="cuisines">
+      <section className="flavourly-section" id="cuisines">
         <h2>Explore cuisines</h2>
-        <div className="savorly-cuisine-grid">
+        <div className="flavourly-cuisine-grid">
           {CUISINES.map((c) => (
-            <button key={c.id} className="savorly-cuisine-card" onClick={() => onSelectCuisine(c.id)}>
-              <div className="savorly-cuisine-art" style={{ background: `linear-gradient(135deg, ${c.grad[0]}, ${c.grad[1]})` }}>
+            <button key={c.id} className="flavourly-cuisine-card" onClick={() => onSelectCuisine(c.id)}>
+              <div className="flavourly-cuisine-art" style={{ background: `linear-gradient(135deg, ${c.grad[0]}, ${c.grad[1]})` }}>
                 <span>{c.flag}</span>
               </div>
-              <div className="savorly-cuisine-info">
+              <div className="flavourly-cuisine-info">
                 <strong>{c.name}</strong>
                 <span>{RECIPES.filter((r) => r.cuisine === c.id).length} recipes</span>
               </div>
@@ -860,31 +860,31 @@ function HomePage({ onSelectCuisine, onSelectRecipe, onOpenChef, recentlyViewed 
         </div>
       </section>
 
-      <section className="savorly-section" id="trending">
-        <div className="savorly-section-head"><h2>Trending recipes</h2></div>
-        <div className="savorly-recipe-grid">
+      <section className="flavourly-section" id="trending">
+        <div className="flavourly-section-head"><h2>Trending recipes</h2></div>
+        <div className="flavourly-recipe-grid">
           {trending.map((r) => <RecipeCard key={r.id} recipe={r} onClick={() => onSelectRecipe(r)} />)}
         </div>
       </section>
 
-      <section className="savorly-section">
-        <div className="savorly-section-head"><h2>Quick &amp; easy</h2><span className="savorly-section-sub">Ready in 30 minutes or less</span></div>
-        <div className="savorly-recipe-grid">
+      <section className="flavourly-section">
+        <div className="flavourly-section-head"><h2>Quick &amp; easy</h2><span className="flavourly-section-sub">Ready in 30 minutes or less</span></div>
+        <div className="flavourly-recipe-grid">
           {quick.map((r) => <RecipeCard key={r.id} recipe={r} onClick={() => onSelectRecipe(r)} />)}
         </div>
       </section>
 
       {recentlyViewed.length > 0 && (
-        <section className="savorly-section" aria-labelledby="recently-viewed-heading">
-          <div className="savorly-section-head"><h2 id="recently-viewed-heading">Recently viewed</h2></div>
-          <div className="savorly-recipe-grid">
+        <section className="flavourly-section" aria-labelledby="recently-viewed-heading">
+          <div className="flavourly-section-head"><h2 id="recently-viewed-heading">Recently viewed</h2></div>
+          <div className="flavourly-recipe-grid">
             {recentlyViewed.map((r) => <RecipeCard key={r.id} recipe={r} onClick={() => onSelectRecipe(r)} />)}
           </div>
         </section>
       )}
 
-      <button className="savorly-ask-chef" onClick={onOpenChef}>
-        <div className="savorly-ask-chef-icon"><Sparkles size={22} /></div>
+      <button className="flavourly-ask-chef" onClick={onOpenChef}>
+        <div className="flavourly-ask-chef-icon"><Sparkles size={22} /></div>
         <div>
           <h3>Not sure what to make?</h3>
           <p>Tell Chef AI what's in your fridge, or how much time you've got, and get matched recipes instantly.</p>
@@ -904,31 +904,31 @@ function CuisinePage({ cuisineId, onBack, onSelectRecipe, onOpenChef }) {
   const results = useMemo(() => searchRecipes(query, pool), [query, pool]);
 
   return (
-    <div className="savorly-page">
-      <button className="savorly-back" onClick={onBack}><ArrowLeft size={16} /> Back</button>
-      <section className="savorly-cuisine-hero" style={{ background: `linear-gradient(120deg, ${cuisine.grad[0]}22, ${cuisine.grad[1]}22)` }}>
-        <span className="savorly-cuisine-hero-flag">{cuisine.flag}</span>
+    <div className="flavourly-page">
+      <button className="flavourly-back" onClick={onBack}><ArrowLeft size={16} /> Back</button>
+      <section className="flavourly-cuisine-hero" style={{ background: `linear-gradient(120deg, ${cuisine.grad[0]}22, ${cuisine.grad[1]}22)` }}>
+        <span className="flavourly-cuisine-hero-flag">{cuisine.flag}</span>
         <h1>{cuisine.name} Cuisine</h1>
         <p>{cuisine.tagline}</p>
       </section>
 
-      <div className="savorly-search-bar">
+      <div className="flavourly-search-bar">
         <Search size={18} />
         <input aria-label={`Search ${cuisine.name} recipes`} placeholder={`Search ${cuisine.name} recipes...`} value={query} onChange={(e) => setQuery(e.target.value)} />
       </div>
 
-      <section className="savorly-section">
+      <section className="flavourly-section">
         <h2>{query ? "Search results" : `Trending in ${cuisine.name} cuisine`}</h2>
         {loading ? (
           <Skeleton rows={pool.length || 3} />
         ) : results.length ? (
-          <div className="savorly-recipe-grid">
+          <div className="flavourly-recipe-grid">
             {results.map((r) => <RecipeCard key={r.id} recipe={r} onClick={() => onSelectRecipe(r)} />)}
           </div>
         ) : (
-          <div className="savorly-empty">
+          <div className="flavourly-empty">
             <p>We couldn't find that recipe yet. Try another name, or ask Chef AI.</p>
-            <button className="savorly-btn" onClick={onOpenChef}>Ask Chef AI</button>
+            <button className="flavourly-btn" onClick={onOpenChef}>Ask Chef AI</button>
           </div>
         )}
       </section>
@@ -955,52 +955,52 @@ function RecipePage({ recipe, onBack, forceServings, onOpenChef }) {
   ].filter(Boolean);
 
   return (
-    <div className="savorly-page">
-      <button className="savorly-back" onClick={onBack}><ArrowLeft size={16} /> Back</button>
+    <div className="flavourly-page">
+      <button className="flavourly-back" onClick={onBack}><ArrowLeft size={16} /> Back</button>
 
-      <section className="savorly-recipe-hero" style={{ background: `linear-gradient(135deg, ${cuisine.grad[0]}, ${cuisine.grad[1]})` }}>
-        <div className="savorly-recipe-hero-overlay">
-          {recipe.trending && <span className="savorly-trend-pill">🔥 Trending</span>}
+      <section className="flavourly-recipe-hero" style={{ background: `linear-gradient(135deg, ${cuisine.grad[0]}, ${cuisine.grad[1]})` }}>
+        <div className="flavourly-recipe-hero-overlay">
+          {recipe.trending && <span className="flavourly-trend-pill">🔥 Trending</span>}
           <h1>{recipe.title}</h1>
           <p>{recipe.description}</p>
         </div>
       </section>
 
-      <div className="savorly-recipe-meta-row">
+      <div className="flavourly-recipe-meta-row">
         <div><Star size={15} fill="#E2963A" color="#E2963A" /> {recipe.rating} rating</div>
         <div><Clock size={15} /> {recipe.prepTime} min prep</div>
         <div><Utensils size={15} /> {recipe.cookTime} min cook</div>
         <div><DifficultyBadge level={recipe.difficulty} /></div>
-        <div className="savorly-spice-meta">Spice <SpiceLevel level={recipe.spice} /></div>
+        <div className="flavourly-spice-meta">Spice <SpiceLevel level={recipe.spice} /></div>
       </div>
 
-      <div className="savorly-recipe-columns">
-        <aside className="savorly-ingredients-col">
-          <div className="savorly-servings-control">
+      <div className="flavourly-recipe-columns">
+        <aside className="flavourly-ingredients-col">
+          <div className="flavourly-servings-control">
             <span><Users size={15} /> Servings</span>
-            <div className="savorly-servings-stepper">
+            <div className="flavourly-servings-stepper">
               <button onClick={() => setServings((s) => Math.max(1, s - 1))} aria-label="Decrease servings"><Minus size={14} /></button>
               <strong>{servings}</strong>
               <button onClick={() => setServings((s) => s + 1)} aria-label="Increase servings"><Plus size={14} /></button>
             </div>
           </div>
           <h3>Ingredients</h3>
-          <ul className="savorly-ingredient-list">
+          <ul className="flavourly-ingredient-list">
             {recipe.ingredients.map((ing) => (
               <li key={ing.id}>
-                <span className="savorly-ing-amount">{formatAmount(ing.amount * scale)}{ing.unit ? ` ${ing.unit}` : ""}</span>
+                <span className="flavourly-ing-amount">{formatAmount(ing.amount * scale)}{ing.unit ? ` ${ing.unit}` : ""}</span>
                 <span>{ing.name}</span>
               </li>
             ))}
           </ul>
         </aside>
 
-        <main className="savorly-instructions-col">
+        <main className="flavourly-instructions-col">
           <h3>Instructions</h3>
-          <ol className="savorly-steps">
+          <ol className="flavourly-steps">
             {recipe.instructions.map((step, i) => (
               <li key={i}>
-                <span className="savorly-step-num">{i + 1}</span>
+                <span className="flavourly-step-num">{i + 1}</span>
                 <div>
                   <strong>{step.title}</strong>
                   <p>{step.description}</p>
@@ -1010,38 +1010,38 @@ function RecipePage({ recipe, onBack, forceServings, onOpenChef }) {
           </ol>
 
           {extraSections.length > 0 && (
-            <div className="savorly-extras">
+            <div className="flavourly-extras">
               {extraSections.map((s) => <Accordion key={s.title} title={s.title}>{s.content}</Accordion>)}
             </div>
           )}
         </main>
       </div>
 
-      <section className="savorly-section">
+      <section className="flavourly-section">
         <h2>Recommended video search</h2>
-        <div className="savorly-video-best">
-          <div className="savorly-video-thumb" style={{ background: `linear-gradient(135deg, ${cuisine.grad[0]}, ${cuisine.grad[1]})` }}>
+        <div className="flavourly-video-best">
+          <div className="flavourly-video-thumb" style={{ background: `linear-gradient(135deg, ${cuisine.grad[0]}, ${cuisine.grad[1]})` }}>
             <PlayCircle size={40} color="#fff" />
           </div>
-          <div className="savorly-video-info">
+          <div className="flavourly-video-info">
             <strong>{bestVideo.title}</strong>
             <span>{bestVideo.channel} · {bestVideo.views} · {bestVideo.date}</span>
-            <div className="savorly-video-meta-row">
+            <div className="flavourly-video-meta-row">
               <span><Clock size={12} /> {bestVideo.duration}</span>
-              <span className="savorly-relevance">{bestVideo.relevance}% relevant</span>
+              <span className="flavourly-relevance">{bestVideo.relevance}% relevant</span>
             </div>
-            <a href={bestVideo.url} target="_blank" rel="noreferrer" className="savorly-btn savorly-btn-small">
+            <a href={bestVideo.url} target="_blank" rel="noreferrer" className="flavourly-btn flavourly-btn-small">
               Find on YouTube <ExternalLink size={13} />
             </a>
           </div>
         </div>
         {otherVideos.length > 0 && (
           <>
-            <h3 className="savorly-subhead">Other YouTube searches</h3>
-            <div className="savorly-video-alts">
+            <h3 className="flavourly-subhead">Other YouTube searches</h3>
+            <div className="flavourly-video-alts">
               {otherVideos.map((v, i) => (
-                <a key={i} href={v.url} target="_blank" rel="noreferrer" className="savorly-video-alt">
-                  <div className="savorly-video-alt-thumb"><PlayCircle size={20} /></div>
+                <a key={i} href={v.url} target="_blank" rel="noreferrer" className="flavourly-video-alt">
+                  <div className="flavourly-video-alt-thumb"><PlayCircle size={20} /></div>
                   <div>
                     <strong>{v.title}</strong>
                     <span>{v.channel} · {v.views} · {v.duration}</span>
@@ -1053,7 +1053,7 @@ function RecipePage({ recipe, onBack, forceServings, onOpenChef }) {
         )}
       </section>
 
-      <button className="savorly-recipe-chef-cta" onClick={onOpenChef}>
+      <button className="flavourly-recipe-chef-cta" onClick={onOpenChef}>
         <ChefHat size={20} />
         <span>Ask Chef AI about {recipe.title} — substitutions, spice, servings, anything.</span>
       </button>
@@ -1063,7 +1063,7 @@ function RecipePage({ recipe, onBack, forceServings, onOpenChef }) {
 
 /* ============================= APP ROOT ============================= */
 
-export default function Savorly() {
+export default function Flavourly() {
   const [view, setView] = useState("home");
   const [cuisineId, setCuisineId] = useState(null);
   const [recipe, setRecipe] = useState(null);
@@ -1099,7 +1099,7 @@ export default function Savorly() {
   }, []);
 
   useEffect(() => {
-    const title = recipe ? `${recipe.title} | Savorly` : view === "cuisine" ? `${CUISINE_MAP[cuisineId]?.name ?? "Cuisine"} recipes | Savorly` : "Savorly | Find your next favorite recipe";
+    const title = recipe ? `${recipe.title} | Flavourly` : view === "cuisine" ? `${CUISINE_MAP[cuisineId]?.name ?? "Cuisine"} recipes | Flavourly` : "Flavourly | Find your next favorite recipe";
     document.title = title;
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [view, cuisineId, recipe]);
@@ -1117,11 +1117,11 @@ export default function Savorly() {
   };
 
   return (
-    <div className="savorly-app">
+    <div className="flavourly-app">
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap');
 
-        .savorly-app {
+        .flavourly-app {
           --cream: #FBF6EE; --cream-deep: #F1E7D6; --ink: #2A2420; --ink-soft: #6B5D52;
           --saffron: #E2963A; --paprika: #B5432A; --basil: #3F5C4E;
           --glass: rgba(255,255,255,0.6); --glass-border: rgba(255,255,255,0.8);
@@ -1129,232 +1129,232 @@ export default function Savorly() {
           font-family: 'Manrope', sans-serif; color: var(--ink); background: var(--cream);
           min-height: 100vh; position: relative;
         }
-        .savorly-app h1, .savorly-app h2, .savorly-app h3 { font-family: 'Fraunces', serif; margin: 0; }
-        .savorly-app * { box-sizing: border-box; }
-        .savorly-app button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
-        .savorly-app ul, .savorly-app ol { padding: 0; margin: 0; list-style: none; }
-        .savorly-app a { color: inherit; text-decoration: none; }
-        .savorly-skip-link { position: fixed; left: 16px; top: -48px; z-index: 100; padding: 10px 14px; border-radius: 8px; background: var(--ink); color: #fff; font-weight: 700; }
-        .savorly-skip-link:focus { top: 16px; }
-        .savorly-app button:focus-visible, .savorly-app a:focus-visible, .savorly-app input:focus-visible { outline: 3px solid var(--saffron); outline-offset: 3px; }
+        .flavourly-app h1, .flavourly-app h2, .flavourly-app h3 { font-family: 'Fraunces', serif; margin: 0; }
+        .flavourly-app * { box-sizing: border-box; }
+        .flavourly-app button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+        .flavourly-app ul, .flavourly-app ol { padding: 0; margin: 0; list-style: none; }
+        .flavourly-app a { color: inherit; text-decoration: none; }
+        .flavourly-skip-link { position: fixed; left: 16px; top: -48px; z-index: 100; padding: 10px 14px; border-radius: 8px; background: var(--ink); color: #fff; font-weight: 700; }
+        .flavourly-skip-link:focus { top: 16px; }
+        .flavourly-app button:focus-visible, .flavourly-app a:focus-visible, .flavourly-app input:focus-visible { outline: 3px solid var(--saffron); outline-offset: 3px; }
 
-        .savorly-nav { position: sticky; top: 0; z-index: 20; display: flex; align-items: center; justify-content: space-between;
+        .flavourly-nav { position: sticky; top: 0; z-index: 20; display: flex; align-items: center; justify-content: space-between;
           padding: 14px 28px; background: var(--glass); backdrop-filter: blur(16px); border-bottom: 1px solid var(--glass-border); }
-        .savorly-logo { font-family: 'Fraunces', serif; font-weight: 600; font-size: 22px; letter-spacing: -0.02em; cursor: pointer; }
-        .savorly-nav-links { display: flex; gap: 26px; font-size: 14.5px; font-weight: 500; color: var(--ink-soft); }
-        .savorly-nav-links button:hover { color: var(--ink); }
-        .savorly-nav-right { display: flex; align-items: center; gap: 10px; }
-        .savorly-chef-btn { display: flex; align-items: center; gap: 6px; padding: 9px 16px; border-radius: 999px;
+        .flavourly-logo { font-family: 'Fraunces', serif; font-weight: 600; font-size: 22px; letter-spacing: -0.02em; cursor: pointer; }
+        .flavourly-nav-links { display: flex; gap: 26px; font-size: 14.5px; font-weight: 500; color: var(--ink-soft); }
+        .flavourly-nav-links button:hover { color: var(--ink); }
+        .flavourly-nav-right { display: flex; align-items: center; gap: 10px; }
+        .flavourly-chef-btn { display: flex; align-items: center; gap: 6px; padding: 9px 16px; border-radius: 999px;
           background: linear-gradient(135deg, var(--saffron), var(--paprika)); color: white; font-weight: 600; font-size: 13.5px;
           box-shadow: 0 4px 14px rgba(181,67,42,0.25); }
-        .savorly-icon-btn { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; }
-        .savorly-icon-btn:hover { background: rgba(0,0,0,0.05); }
+        .flavourly-icon-btn { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; }
+        .flavourly-icon-btn:hover { background: rgba(0,0,0,0.05); }
 
-        .savorly-page { max-width: 1180px; margin: 0 auto; padding: 36px 28px 100px; }
-        .savorly-hero { text-align: center; padding: 60px 20px 40px; }
-        .savorly-hero h1 { font-size: 44px; line-height: 1.15; font-weight: 600; }
-        .savorly-hero p { color: var(--ink-soft); margin-top: 14px; font-size: 16px; }
-        .savorly-hero-search { max-width: 560px; margin: 30px auto 0; display: flex; align-items: center; gap: 10px;
+        .flavourly-page { max-width: 1180px; margin: 0 auto; padding: 36px 28px 100px; }
+        .flavourly-hero { text-align: center; padding: 60px 20px 40px; }
+        .flavourly-hero h1 { font-size: 44px; line-height: 1.15; font-weight: 600; }
+        .flavourly-hero p { color: var(--ink-soft); margin-top: 14px; font-size: 16px; }
+        .flavourly-hero-search { max-width: 560px; margin: 30px auto 0; display: flex; align-items: center; gap: 10px;
           background: var(--glass); border: 1px solid var(--glass-border); border-radius: 999px; padding: 14px 20px;
           backdrop-filter: blur(10px); box-shadow: 0 8px 24px var(--shadow); }
-        .savorly-hero-search input { border: none; background: none; outline: none; width: 100%; font-size: 15px; color: var(--ink); }
+        .flavourly-hero-search input { border: none; background: none; outline: none; width: 100%; font-size: 15px; color: var(--ink); }
 
-        .savorly-section { margin-top: 52px; }
-        .savorly-section h2 { font-size: 24px; font-weight: 600; margin-bottom: 18px; }
-        .savorly-section-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 18px; }
-        .savorly-section-sub { color: var(--ink-soft); font-size: 13.5px; }
+        .flavourly-section { margin-top: 52px; }
+        .flavourly-section h2 { font-size: 24px; font-weight: 600; margin-bottom: 18px; }
+        .flavourly-section-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 18px; }
+        .flavourly-section-sub { color: var(--ink-soft); font-size: 13.5px; }
 
-        .savorly-cuisine-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
-        .savorly-cuisine-card { border-radius: 20px; overflow: hidden; background: var(--glass); border: 1px solid var(--glass-border);
+        .flavourly-cuisine-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+        .flavourly-cuisine-card { border-radius: 20px; overflow: hidden; background: var(--glass); border: 1px solid var(--glass-border);
           box-shadow: 0 6px 20px var(--shadow); transition: transform .25s ease, box-shadow .25s ease; text-align: left; }
-        .savorly-cuisine-card:hover { transform: translateY(-4px); box-shadow: 0 14px 30px var(--shadow); }
-        .savorly-cuisine-art { height: 90px; display: flex; align-items: center; justify-content: center; font-size: 30px; }
-        .savorly-cuisine-info { padding: 12px 14px 14px; }
-        .savorly-cuisine-info strong { display: block; font-size: 15px; }
-        .savorly-cuisine-info span { font-size: 12px; color: var(--ink-soft); }
+        .flavourly-cuisine-card:hover { transform: translateY(-4px); box-shadow: 0 14px 30px var(--shadow); }
+        .flavourly-cuisine-art { height: 90px; display: flex; align-items: center; justify-content: center; font-size: 30px; }
+        .flavourly-cuisine-info { padding: 12px 14px 14px; }
+        .flavourly-cuisine-info strong { display: block; font-size: 15px; }
+        .flavourly-cuisine-info span { font-size: 12px; color: var(--ink-soft); }
 
-        .savorly-recipe-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
-        .savorly-card { border-radius: 20px; overflow: hidden; text-align: left; background: var(--glass);
+        .flavourly-recipe-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+        .flavourly-card { border-radius: 20px; overflow: hidden; text-align: left; background: var(--glass);
           border: 1px solid var(--glass-border); box-shadow: 0 6px 20px var(--shadow); transition: transform .25s ease, box-shadow .25s ease; }
-        .savorly-recipe-card:hover { transform: translateY(-5px); box-shadow: 0 16px 34px var(--shadow); }
-        .savorly-recipe-card:hover .savorly-art { transform: scale(1.06); }
-        .savorly-card-media { position: relative; overflow: hidden; }
-        .savorly-art { display: flex; align-items: center; justify-content: center; position: relative; transition: transform .4s ease; }
-        .savorly-art-shine { position: absolute; inset: 0; background: linear-gradient(160deg, rgba(255,255,255,0.25), transparent 55%); }
-        .savorly-trend-pill { position: absolute; top: 10px; left: 10px; display: flex; align-items: center; gap: 4px;
+        .flavourly-recipe-card:hover { transform: translateY(-5px); box-shadow: 0 16px 34px var(--shadow); }
+        .flavourly-recipe-card:hover .flavourly-art { transform: scale(1.06); }
+        .flavourly-card-media { position: relative; overflow: hidden; }
+        .flavourly-art { display: flex; align-items: center; justify-content: center; position: relative; transition: transform .4s ease; }
+        .flavourly-art-shine { position: absolute; inset: 0; background: linear-gradient(160deg, rgba(255,255,255,0.25), transparent 55%); }
+        .flavourly-trend-pill { position: absolute; top: 10px; left: 10px; display: flex; align-items: center; gap: 4px;
           background: rgba(0,0,0,0.55); color: #fff; font-size: 11px; padding: 4px 9px; border-radius: 999px; backdrop-filter: blur(4px); }
-        .savorly-card-body { padding: 14px 16px 16px; }
-        .savorly-card-top-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
-        .savorly-cuisine-tag { font-size: 11.5px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.04em; }
-        .savorly-rating { display: flex; align-items: center; gap: 3px; font-size: 12.5px; font-weight: 600; }
-        .savorly-card-title { font-size: 17px; font-weight: 600; margin-bottom: 4px; }
-        .savorly-card-desc { font-size: 12.8px; color: var(--ink-soft); line-height: 1.4; margin-bottom: 10px;
+        .flavourly-card-body { padding: 14px 16px 16px; }
+        .flavourly-card-top-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+        .flavourly-cuisine-tag { font-size: 11.5px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.04em; }
+        .flavourly-rating { display: flex; align-items: center; gap: 3px; font-size: 12.5px; font-weight: 600; }
+        .flavourly-card-title { font-size: 17px; font-weight: 600; margin-bottom: 4px; }
+        .flavourly-card-desc { font-size: 12.8px; color: var(--ink-soft); line-height: 1.4; margin-bottom: 10px;
           display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-        .savorly-card-meta { display: flex; align-items: center; gap: 10px; font-size: 12px; color: var(--ink-soft); }
-        .savorly-card-meta > span { display: flex; align-items: center; gap: 4px; }
+        .flavourly-card-meta { display: flex; align-items: center; gap: 10px; font-size: 12px; color: var(--ink-soft); }
+        .flavourly-card-meta > span { display: flex; align-items: center; gap: 4px; }
 
-        .savorly-badge { font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 999px; }
-        .savorly-badge-easy { background: #E4EFE1; color: var(--basil); }
-        .savorly-badge-medium { background: #FBEBD3; color: #9A6B1E; }
-        .savorly-badge-hard { background: #F6DEDA; color: var(--paprika); }
-        .savorly-spice { display: inline-flex; gap: 1px; }
+        .flavourly-badge { font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 999px; }
+        .flavourly-badge-easy { background: #E4EFE1; color: var(--basil); }
+        .flavourly-badge-medium { background: #FBEBD3; color: #9A6B1E; }
+        .flavourly-badge-hard { background: #F6DEDA; color: var(--paprika); }
+        .flavourly-spice { display: inline-flex; gap: 1px; }
 
-        .savorly-ask-chef { margin-top: 56px; display: flex; align-items: center; gap: 20px; padding: 26px 28px; border-radius: 22px;
+        .flavourly-ask-chef { margin-top: 56px; display: flex; align-items: center; gap: 20px; padding: 26px 28px; border-radius: 22px;
           background: linear-gradient(120deg, rgba(226,150,58,0.16), rgba(181,67,42,0.10)); border: 1px solid var(--glass-border); cursor: pointer;
           transition: transform .2s ease; text-align: left; width: 100%; }
-        .savorly-ask-chef:hover { transform: translateY(-3px); }
-        .savorly-ask-chef-icon { width: 46px; height: 46px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+        .flavourly-ask-chef:hover { transform: translateY(-3px); }
+        .flavourly-ask-chef-icon { width: 46px; height: 46px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
           background: linear-gradient(135deg, var(--saffron), var(--paprika)); color: #fff; flex-shrink: 0; }
-        .savorly-ask-chef h3 { font-size: 18px; margin-bottom: 4px; }
-        .savorly-ask-chef p { margin: 0; font-size: 13.5px; color: var(--ink-soft); }
+        .flavourly-ask-chef h3 { font-size: 18px; margin-bottom: 4px; }
+        .flavourly-ask-chef p { margin: 0; font-size: 13.5px; color: var(--ink-soft); }
 
-        .savorly-back { display: flex; align-items: center; gap: 6px; font-size: 13.5px; color: var(--ink-soft); margin-bottom: 22px; }
-        .savorly-back:hover { color: var(--ink); }
+        .flavourly-back { display: flex; align-items: center; gap: 6px; font-size: 13.5px; color: var(--ink-soft); margin-bottom: 22px; }
+        .flavourly-back:hover { color: var(--ink); }
 
-        .savorly-cuisine-hero { text-align: center; padding: 44px 20px; border-radius: 24px; margin-bottom: 26px; }
-        .savorly-cuisine-hero-flag { font-size: 40px; }
-        .savorly-cuisine-hero h1 { font-size: 32px; margin-top: 8px; }
-        .savorly-cuisine-hero p { color: var(--ink-soft); margin-top: 8px; max-width: 480px; margin-left: auto; margin-right: auto; }
+        .flavourly-cuisine-hero { text-align: center; padding: 44px 20px; border-radius: 24px; margin-bottom: 26px; }
+        .flavourly-cuisine-hero-flag { font-size: 40px; }
+        .flavourly-cuisine-hero h1 { font-size: 32px; margin-top: 8px; }
+        .flavourly-cuisine-hero p { color: var(--ink-soft); margin-top: 8px; max-width: 480px; margin-left: auto; margin-right: auto; }
 
-        .savorly-search-bar { display: flex; align-items: center; gap: 10px; background: var(--glass); border: 1px solid var(--glass-border);
+        .flavourly-search-bar { display: flex; align-items: center; gap: 10px; background: var(--glass); border: 1px solid var(--glass-border);
           border-radius: 999px; padding: 13px 20px; backdrop-filter: blur(10px); max-width: 480px; margin: 0 auto 8px; box-shadow: 0 6px 18px var(--shadow); }
-        .savorly-search-bar input { border: none; outline: none; background: none; width: 100%; font-size: 14.5px; }
+        .flavourly-search-bar input { border: none; outline: none; background: none; width: 100%; font-size: 14.5px; }
 
-        .savorly-empty { text-align: center; padding: 50px 20px; color: var(--ink-soft); }
-        .savorly-btn { display: inline-flex; align-items: center; gap: 6px; margin-top: 14px; padding: 10px 20px; border-radius: 999px;
+        .flavourly-empty { text-align: center; padding: 50px 20px; color: var(--ink-soft); }
+        .flavourly-btn { display: inline-flex; align-items: center; gap: 6px; margin-top: 14px; padding: 10px 20px; border-radius: 999px;
           background: linear-gradient(135deg, var(--saffron), var(--paprika)); color: #fff; font-weight: 600; font-size: 13.5px; }
-        .savorly-btn-small { margin-top: 12px; padding: 9px 16px; font-size: 13px; }
+        .flavourly-btn-small { margin-top: 12px; padding: 9px 16px; font-size: 13px; }
 
-        .savorly-skeleton-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
-        .savorly-skeleton-card { border-radius: 20px; padding: 14px; background: var(--glass); border: 1px solid var(--glass-border); }
-        .savorly-skel { background: linear-gradient(90deg, #ECE3D4 25%, #F5EEE2 37%, #ECE3D4 63%); background-size: 400% 100%;
-          animation: savorly-shimmer 1.4s ease infinite; border-radius: 8px; }
-        .savorly-skel-media { height: 130px; margin-bottom: 12px; border-radius: 14px; }
-        .savorly-skel-line { height: 12px; margin-top: 8px; }
-        @keyframes savorly-shimmer { 0% { background-position: 100% 0; } 100% { background-position: -100% 0; } }
+        .flavourly-skeleton-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+        .flavourly-skeleton-card { border-radius: 20px; padding: 14px; background: var(--glass); border: 1px solid var(--glass-border); }
+        .flavourly-skel { background: linear-gradient(90deg, #ECE3D4 25%, #F5EEE2 37%, #ECE3D4 63%); background-size: 400% 100%;
+          animation: flavourly-shimmer 1.4s ease infinite; border-radius: 8px; }
+        .flavourly-skel-media { height: 130px; margin-bottom: 12px; border-radius: 14px; }
+        .flavourly-skel-line { height: 12px; margin-top: 8px; }
+        @keyframes flavourly-shimmer { 0% { background-position: 100% 0; } 100% { background-position: -100% 0; } }
 
-        .savorly-recipe-hero { position: relative; border-radius: 26px; height: 260px; display: flex; align-items: flex-end; overflow: hidden; }
-        .savorly-recipe-hero-overlay { padding: 30px; color: #fff; background: linear-gradient(0deg, rgba(0,0,0,0.45), transparent 70%); width: 100%; }
-        .savorly-recipe-hero-overlay h1 { font-size: 34px; color: #fff; }
-        .savorly-recipe-hero-overlay p { margin-top: 6px; opacity: 0.92; font-size: 14.5px; max-width: 520px; }
+        .flavourly-recipe-hero { position: relative; border-radius: 26px; height: 260px; display: flex; align-items: flex-end; overflow: hidden; }
+        .flavourly-recipe-hero-overlay { padding: 30px; color: #fff; background: linear-gradient(0deg, rgba(0,0,0,0.45), transparent 70%); width: 100%; }
+        .flavourly-recipe-hero-overlay h1 { font-size: 34px; color: #fff; }
+        .flavourly-recipe-hero-overlay p { margin-top: 6px; opacity: 0.92; font-size: 14.5px; max-width: 520px; }
 
-        .savorly-recipe-meta-row { display: flex; flex-wrap: wrap; gap: 22px; align-items: center; padding: 18px 4px; font-size: 13.5px;
+        .flavourly-recipe-meta-row { display: flex; flex-wrap: wrap; gap: 22px; align-items: center; padding: 18px 4px; font-size: 13.5px;
           color: var(--ink-soft); border-bottom: 1px solid rgba(0,0,0,0.06); margin-bottom: 30px; }
-        .savorly-recipe-meta-row > div { display: flex; align-items: center; gap: 6px; }
-        .savorly-spice-meta { display: flex; align-items: center; gap: 6px; }
+        .flavourly-recipe-meta-row > div { display: flex; align-items: center; gap: 6px; }
+        .flavourly-spice-meta { display: flex; align-items: center; gap: 6px; }
 
-        .savorly-recipe-columns { display: grid; grid-template-columns: 300px 1fr; gap: 40px; }
-        .savorly-ingredients-col h3, .savorly-instructions-col h3 { font-size: 18px; margin-bottom: 14px; }
-        .savorly-servings-control { display: flex; align-items: center; justify-content: space-between; background: var(--glass);
+        .flavourly-recipe-columns { display: grid; grid-template-columns: 300px 1fr; gap: 40px; }
+        .flavourly-ingredients-col h3, .flavourly-instructions-col h3 { font-size: 18px; margin-bottom: 14px; }
+        .flavourly-servings-control { display: flex; align-items: center; justify-content: space-between; background: var(--glass);
           border: 1px solid var(--glass-border); border-radius: 14px; padding: 12px 16px; margin-bottom: 22px; font-size: 13.5px; font-weight: 600; }
-        .savorly-servings-control span { display: flex; align-items: center; gap: 6px; }
-        .savorly-servings-stepper { display: flex; align-items: center; gap: 12px; }
-        .savorly-servings-stepper button { width: 26px; height: 26px; border-radius: 50%; background: rgba(0,0,0,0.06); display: flex; align-items: center; justify-content: center; }
-        .savorly-ingredient-list li { display: flex; justify-content: space-between; gap: 12px; padding: 9px 0; font-size: 14px;
+        .flavourly-servings-control span { display: flex; align-items: center; gap: 6px; }
+        .flavourly-servings-stepper { display: flex; align-items: center; gap: 12px; }
+        .flavourly-servings-stepper button { width: 26px; height: 26px; border-radius: 50%; background: rgba(0,0,0,0.06); display: flex; align-items: center; justify-content: center; }
+        .flavourly-ingredient-list li { display: flex; justify-content: space-between; gap: 12px; padding: 9px 0; font-size: 14px;
           border-bottom: 1px dashed rgba(0,0,0,0.08); }
-        .savorly-ing-amount { font-weight: 700; color: var(--basil); white-space: nowrap; }
+        .flavourly-ing-amount { font-weight: 700; color: var(--basil); white-space: nowrap; }
 
-        .savorly-steps li { display: flex; gap: 16px; margin-bottom: 22px; }
-        .savorly-step-num { flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%; background: linear-gradient(135deg, var(--saffron), var(--paprika));
+        .flavourly-steps li { display: flex; gap: 16px; margin-bottom: 22px; }
+        .flavourly-step-num { flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%; background: linear-gradient(135deg, var(--saffron), var(--paprika));
           color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; }
-        .savorly-steps strong { font-size: 15px; }
-        .savorly-steps p { margin-top: 4px; font-size: 13.8px; color: var(--ink-soft); line-height: 1.5; }
+        .flavourly-steps strong { font-size: 15px; }
+        .flavourly-steps p { margin-top: 4px; font-size: 13.8px; color: var(--ink-soft); line-height: 1.5; }
 
-        .savorly-extras { margin-top: 30px; }
-        .savorly-accordion { border-top: 1px solid rgba(0,0,0,0.08); }
-        .savorly-accordion:last-child { border-bottom: 1px solid rgba(0,0,0,0.08); }
-        .savorly-accordion-head { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 14px 2px; font-weight: 600; font-size: 14.5px; }
-        .savorly-accordion-body { padding: 0 2px 16px; font-size: 13.8px; color: var(--ink-soft); line-height: 1.6; }
-        .savorly-accordion-body li { margin-bottom: 6px; }
+        .flavourly-extras { margin-top: 30px; }
+        .flavourly-accordion { border-top: 1px solid rgba(0,0,0,0.08); }
+        .flavourly-accordion:last-child { border-bottom: 1px solid rgba(0,0,0,0.08); }
+        .flavourly-accordion-head { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 14px 2px; font-weight: 600; font-size: 14.5px; }
+        .flavourly-accordion-body { padding: 0 2px 16px; font-size: 13.8px; color: var(--ink-soft); line-height: 1.6; }
+        .flavourly-accordion-body li { margin-bottom: 6px; }
 
-        .savorly-subhead { font-size: 15px; margin: 22px 0 12px; }
-        .savorly-video-best { display: flex; gap: 20px; background: var(--glass); border: 1px solid var(--glass-border); border-radius: 20px; padding: 18px; box-shadow: 0 8px 22px var(--shadow); }
-        .savorly-video-thumb { width: 220px; height: 130px; border-radius: 14px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
-        .savorly-video-info { display: flex; flex-direction: column; gap: 4px; }
-        .savorly-video-info strong { font-size: 16px; }
-        .savorly-video-info span { font-size: 13px; color: var(--ink-soft); }
-        .savorly-video-meta-row { display: flex; gap: 14px; font-size: 12.5px; color: var(--ink-soft); margin-top: 4px; }
-        .savorly-video-meta-row span { display: flex; align-items: center; gap: 4px; }
-        .savorly-relevance { color: var(--basil); font-weight: 700; }
-        .savorly-video-alts { display: flex; flex-direction: column; gap: 10px; }
-        .savorly-video-alt { display: flex; gap: 12px; align-items: center; padding: 10px 12px; border-radius: 14px; background: var(--glass);
+        .flavourly-subhead { font-size: 15px; margin: 22px 0 12px; }
+        .flavourly-video-best { display: flex; gap: 20px; background: var(--glass); border: 1px solid var(--glass-border); border-radius: 20px; padding: 18px; box-shadow: 0 8px 22px var(--shadow); }
+        .flavourly-video-thumb { width: 220px; height: 130px; border-radius: 14px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+        .flavourly-video-info { display: flex; flex-direction: column; gap: 4px; }
+        .flavourly-video-info strong { font-size: 16px; }
+        .flavourly-video-info span { font-size: 13px; color: var(--ink-soft); }
+        .flavourly-video-meta-row { display: flex; gap: 14px; font-size: 12.5px; color: var(--ink-soft); margin-top: 4px; }
+        .flavourly-video-meta-row span { display: flex; align-items: center; gap: 4px; }
+        .flavourly-relevance { color: var(--basil); font-weight: 700; }
+        .flavourly-video-alts { display: flex; flex-direction: column; gap: 10px; }
+        .flavourly-video-alt { display: flex; gap: 12px; align-items: center; padding: 10px 12px; border-radius: 14px; background: var(--glass);
           border: 1px solid var(--glass-border); }
-        .savorly-video-alt:hover { background: rgba(255,255,255,0.85); }
-        .savorly-video-alt-thumb { width: 40px; height: 40px; border-radius: 10px; background: var(--cream-deep); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-        .savorly-video-alt strong { display: block; font-size: 13.5px; }
-        .savorly-video-alt span { font-size: 11.5px; color: var(--ink-soft); }
+        .flavourly-video-alt:hover { background: rgba(255,255,255,0.85); }
+        .flavourly-video-alt-thumb { width: 40px; height: 40px; border-radius: 10px; background: var(--cream-deep); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .flavourly-video-alt strong { display: block; font-size: 13.5px; }
+        .flavourly-video-alt span { font-size: 11.5px; color: var(--ink-soft); }
 
-        .savorly-recipe-chef-cta { margin-top: 40px; display: flex; align-items: center; gap: 12px; padding: 18px 22px; border-radius: 18px;
+        .flavourly-recipe-chef-cta { margin-top: 40px; display: flex; align-items: center; gap: 12px; padding: 18px 22px; border-radius: 18px;
           background: rgba(63,92,78,0.10); border: 1px solid rgba(63,92,78,0.18); cursor: pointer; font-size: 14px; font-weight: 600; color: var(--basil); }
 
-        .savorly-chef-panel { position: fixed; bottom: 24px; right: 24px; width: 380px; max-height: 620px; display: flex; flex-direction: column;
+        .flavourly-chef-panel { position: fixed; bottom: 24px; right: 24px; width: 380px; max-height: 620px; display: flex; flex-direction: column;
           background: var(--glass); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 22px; box-shadow: 0 20px 50px rgba(0,0,0,0.18);
           z-index: 50; overflow: hidden; }
-        .savorly-chef-head { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; border-bottom: 1px solid rgba(0,0,0,0.06); }
-        .savorly-chef-head-left { display: flex; align-items: center; gap: 10px; }
-        .savorly-chef-icon { width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg, var(--saffron), var(--paprika));
+        .flavourly-chef-head { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; border-bottom: 1px solid rgba(0,0,0,0.06); }
+        .flavourly-chef-head-left { display: flex; align-items: center; gap: 10px; }
+        .flavourly-chef-icon { width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg, var(--saffron), var(--paprika));
           color: #fff; display: flex; align-items: center; justify-content: center; }
-        .savorly-chef-context { font-size: 11.5px; color: var(--ink-soft); }
-        .savorly-chef-messages { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 12px; min-height: 200px; }
-        .savorly-chat-row { display: flex; }
-        .savorly-chat-ai { justify-content: flex-start; }
-        .savorly-chat-user { justify-content: flex-end; }
-        .savorly-chat-bubble { max-width: 88%; padding: 10px 14px; border-radius: 16px; font-size: 13.5px; line-height: 1.5; }
-        .savorly-chat-ai .savorly-chat-bubble { background: rgba(255,255,255,0.85); border: 1px solid var(--glass-border); border-bottom-left-radius: 4px; }
-        .savorly-chat-user .savorly-chat-bubble { background: linear-gradient(135deg, var(--saffron), var(--paprika)); color: #fff; border-bottom-right-radius: 4px; }
-        .savorly-chat-suggestions { margin-top: 10px; display: flex; flex-direction: column; gap: 8px; }
-        .savorly-mini-card { display: flex; gap: 10px; align-items: center; background: rgba(255,255,255,0.7); border: 1px solid var(--glass-border);
+        .flavourly-chef-context { font-size: 11.5px; color: var(--ink-soft); }
+        .flavourly-chef-messages { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 12px; min-height: 200px; }
+        .flavourly-chat-row { display: flex; }
+        .flavourly-chat-ai { justify-content: flex-start; }
+        .flavourly-chat-user { justify-content: flex-end; }
+        .flavourly-chat-bubble { max-width: 88%; padding: 10px 14px; border-radius: 16px; font-size: 13.5px; line-height: 1.5; }
+        .flavourly-chat-ai .flavourly-chat-bubble { background: rgba(255,255,255,0.85); border: 1px solid var(--glass-border); border-bottom-left-radius: 4px; }
+        .flavourly-chat-user .flavourly-chat-bubble { background: linear-gradient(135deg, var(--saffron), var(--paprika)); color: #fff; border-bottom-right-radius: 4px; }
+        .flavourly-chat-suggestions { margin-top: 10px; display: flex; flex-direction: column; gap: 8px; }
+        .flavourly-mini-card { display: flex; gap: 10px; align-items: center; background: rgba(255,255,255,0.7); border: 1px solid var(--glass-border);
           border-radius: 12px; padding: 8px; text-align: left; }
-        .savorly-mini-card:hover { background: #fff; }
-        .savorly-mini-thumb { width: 38px; height: 38px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
-        .savorly-mini-info { display: flex; flex-direction: column; }
-        .savorly-mini-info strong { font-size: 12.8px; }
-        .savorly-mini-info span { font-size: 11px; color: var(--ink-soft); }
-        .savorly-chef-chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 16px 10px; }
-        .savorly-chip { font-size: 11.5px; padding: 6px 11px; border-radius: 999px; background: rgba(0,0,0,0.05); color: var(--ink-soft); }
-        .savorly-chip:hover { background: rgba(0,0,0,0.09); }
-        .savorly-chef-input-row { display: flex; gap: 8px; padding: 12px 16px; border-top: 1px solid rgba(0,0,0,0.06); }
-        .savorly-chef-input-row input { flex: 1; border: 1px solid rgba(0,0,0,0.1); border-radius: 999px; padding: 10px 14px; font-size: 13px; outline: none; background: #fff; }
-        .savorly-send-btn { width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, var(--saffron), var(--paprika)); color: #fff;
+        .flavourly-mini-card:hover { background: #fff; }
+        .flavourly-mini-thumb { width: 38px; height: 38px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+        .flavourly-mini-info { display: flex; flex-direction: column; }
+        .flavourly-mini-info strong { font-size: 12.8px; }
+        .flavourly-mini-info span { font-size: 11px; color: var(--ink-soft); }
+        .flavourly-chef-chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 16px 10px; }
+        .flavourly-chip { font-size: 11.5px; padding: 6px 11px; border-radius: 999px; background: rgba(0,0,0,0.05); color: var(--ink-soft); }
+        .flavourly-chip:hover { background: rgba(0,0,0,0.09); }
+        .flavourly-chef-input-row { display: flex; gap: 8px; padding: 12px 16px; border-top: 1px solid rgba(0,0,0,0.06); }
+        .flavourly-chef-input-row input { flex: 1; border: 1px solid rgba(0,0,0,0.1); border-radius: 999px; padding: 10px 14px; font-size: 13px; outline: none; background: #fff; }
+        .flavourly-send-btn { width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, var(--saffron), var(--paprika)); color: #fff;
           display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 
-        .savorly-chef-fab { position: fixed; bottom: 24px; right: 24px; display: flex; align-items: center; gap: 8px; padding: 14px 22px; border-radius: 999px;
+        .flavourly-chef-fab { position: fixed; bottom: 24px; right: 24px; display: flex; align-items: center; gap: 8px; padding: 14px 22px; border-radius: 999px;
           background: linear-gradient(135deg, var(--saffron), var(--paprika)); color: #fff; font-weight: 700; font-size: 14px; box-shadow: 0 10px 28px rgba(181,67,42,0.35);
           z-index: 40; }
-        .savorly-chef-fab:hover { transform: translateY(-2px); }
+        .flavourly-chef-fab:hover { transform: translateY(-2px); }
 
         @media (max-width: 900px) {
-          .savorly-nav-links { display: none; }
-          .savorly-nav-links.savorly-nav-links-open { display: flex; position: absolute; top: calc(100% + 8px); right: 20px; flex-direction: column; align-items: stretch; min-width: 180px; padding: 8px; border: 1px solid var(--glass-border); border-radius: 14px; background: rgba(255,255,255,0.96); box-shadow: 0 12px 28px var(--shadow); }
-          .savorly-nav-links.savorly-nav-links-open button { padding: 10px; text-align: left; }
-          .savorly-mobile-menu { display: inline-flex; }
-          .savorly-cuisine-grid { grid-template-columns: repeat(3, 1fr); }
-          .savorly-recipe-grid, .savorly-skeleton-grid { grid-template-columns: repeat(2, 1fr); }
-          .savorly-recipe-columns { grid-template-columns: 1fr; }
-          .savorly-hero h1 { font-size: 32px; }
-          .savorly-chef-panel { width: calc(100vw - 24px); right: 12px; left: 12px; bottom: 12px; max-height: 70vh; }
-          .savorly-chef-fab { right: 16px; bottom: 16px; padding: 12px 18px; }
+          .flavourly-nav-links { display: none; }
+          .flavourly-nav-links.flavourly-nav-links-open { display: flex; position: absolute; top: calc(100% + 8px); right: 20px; flex-direction: column; align-items: stretch; min-width: 180px; padding: 8px; border: 1px solid var(--glass-border); border-radius: 14px; background: rgba(255,255,255,0.96); box-shadow: 0 12px 28px var(--shadow); }
+          .flavourly-nav-links.flavourly-nav-links-open button { padding: 10px; text-align: left; }
+          .flavourly-mobile-menu { display: inline-flex; }
+          .flavourly-cuisine-grid { grid-template-columns: repeat(3, 1fr); }
+          .flavourly-recipe-grid, .flavourly-skeleton-grid { grid-template-columns: repeat(2, 1fr); }
+          .flavourly-recipe-columns { grid-template-columns: 1fr; }
+          .flavourly-hero h1 { font-size: 32px; }
+          .flavourly-chef-panel { width: calc(100vw - 24px); right: 12px; left: 12px; bottom: 12px; max-height: 70vh; }
+          .flavourly-chef-fab { right: 16px; bottom: 16px; padding: 12px 18px; }
         }
         @media (max-width: 560px) {
-          .savorly-cuisine-grid { grid-template-columns: repeat(2, 1fr); }
-          .savorly-recipe-grid, .savorly-skeleton-grid { grid-template-columns: 1fr; }
+          .flavourly-cuisine-grid { grid-template-columns: repeat(2, 1fr); }
+          .flavourly-recipe-grid, .flavourly-skeleton-grid { grid-template-columns: 1fr; }
         }
-        @media (min-width: 901px) { .savorly-mobile-menu { display: none; } }
-        @media (prefers-reduced-motion: reduce) { .savorly-app *, .savorly-app *::before, .savorly-app *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
+        @media (min-width: 901px) { .flavourly-mobile-menu { display: none; } }
+        @media (prefers-reduced-motion: reduce) { .flavourly-app *, .flavourly-app *::before, .flavourly-app *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
       `}</style>
 
-      <a className="savorly-skip-link" href="#main-content">Skip to content</a>
-      <nav className="savorly-nav">
-        <button className="savorly-logo" onClick={goHome} aria-label="Savorly home">Savorly</button>
-        <div className={`savorly-nav-links ${mobileNavOpen ? "savorly-nav-links-open" : ""}`}>
+      <a className="flavourly-skip-link" href="#main-content">Skip to content</a>
+      <nav className="flavourly-nav">
+        <button className="flavourly-logo" onClick={goHome} aria-label="Flavourly home">Flavourly</button>
+        <div className={`flavourly-nav-links ${mobileNavOpen ? "flavourly-nav-links-open" : ""}`}>
           <button onClick={goHome}>Explore</button>
           <button onClick={() => navigateHomeSection("cuisines")}>Cuisines</button>
           <button onClick={() => navigateHomeSection("trending")}>Trending</button>
         </div>
-        <div className="savorly-nav-right">
-          <button className="savorly-icon-btn" onClick={goHome} aria-label="Explore recipes"><Search size={18} /></button>
-          <button className="savorly-chef-btn" onClick={() => setChefOpen(true)}><Sparkles size={14} /> Chef AI</button>
-          <button className="savorly-icon-btn savorly-mobile-menu" onClick={() => setMobileNavOpen((open) => !open)} aria-label="Toggle navigation" aria-expanded={mobileNavOpen}><Menu size={18} /></button>
+        <div className="flavourly-nav-right">
+          <button className="flavourly-icon-btn" onClick={goHome} aria-label="Explore recipes"><Search size={18} /></button>
+          <button className="flavourly-chef-btn" onClick={() => setChefOpen(true)}><Sparkles size={14} /> Chef AI</button>
+          <button className="flavourly-icon-btn flavourly-mobile-menu" onClick={() => setMobileNavOpen((open) => !open)} aria-label="Toggle navigation" aria-expanded={mobileNavOpen}><Menu size={18} /></button>
         </div>
       </nav>
 
@@ -1367,7 +1367,7 @@ export default function Savorly() {
       </main>
 
       {!chefOpen && (
-        <button className="savorly-chef-fab" onClick={() => setChefOpen(true)}>
+        <button className="flavourly-chef-fab" onClick={() => setChefOpen(true)}>
           <Sparkles size={16} /> Chef AI
         </button>
       )}

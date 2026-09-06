@@ -36,8 +36,16 @@ const GENERIC_SUBS = {
   "white wine": "a splash of stock with a squeeze of lemon",
 };
 
-const vid = (title, channel, views, date, duration, relevance, ytid) => ({
-  title, channel, views, date, duration, relevance, url: `https://youtube.com/watch?v=${ytid}`,
+// The recipe catalog does not store verified YouTube video IDs. A YouTube search is
+// reliable across regions and avoids sending visitors to fabricated/deleted videos.
+const vid = (title, channel, views, date, duration, relevance) => ({
+  title,
+  channel,
+  views,
+  date,
+  duration,
+  relevance,
+  url: `https://www.youtube.com/results?search_query=${encodeURIComponent(`${title} ${channel}`)}`,
 });
 
 let uid = 0;
@@ -1010,7 +1018,7 @@ function RecipePage({ recipe, onBack, forceServings, onOpenChef }) {
       </div>
 
       <section className="savorly-section">
-        <h2>Best video match</h2>
+        <h2>Recommended video search</h2>
         <div className="savorly-video-best">
           <div className="savorly-video-thumb" style={{ background: `linear-gradient(135deg, ${cuisine.grad[0]}, ${cuisine.grad[1]})` }}>
             <PlayCircle size={40} color="#fff" />
@@ -1023,13 +1031,13 @@ function RecipePage({ recipe, onBack, forceServings, onOpenChef }) {
               <span className="savorly-relevance">{bestVideo.relevance}% relevant</span>
             </div>
             <a href={bestVideo.url} target="_blank" rel="noreferrer" className="savorly-btn savorly-btn-small">
-              Watch on YouTube <ExternalLink size={13} />
+              Find on YouTube <ExternalLink size={13} />
             </a>
           </div>
         </div>
         {otherVideos.length > 0 && (
           <>
-            <h3 className="savorly-subhead">Other recommended videos</h3>
+            <h3 className="savorly-subhead">Other YouTube searches</h3>
             <div className="savorly-video-alts">
               {otherVideos.map((v, i) => (
                 <a key={i} href={v.url} target="_blank" rel="noreferrer" className="savorly-video-alt">
